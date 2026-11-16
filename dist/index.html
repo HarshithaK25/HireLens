@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>HTML, CSS, JavaScript</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIRELENS AI | Smart Hiring Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- PDF and DOCX text extraction -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js"></script>
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">H</div>
+      <div>
+        <b>HIRELENS <span>AI</span></b>
+        <small>SMART HIRING INTELLIGENCE</small>
+      </div>
+    </div>
+
+    <div class="nav-label">WORKSPACE</div>
+    <button class="nav active" data-page="overview">⌂ Overview</button>
+    <button class="nav" data-page="opportunities">⌕ Find opportunities</button>
+    <button class="nav" data-page="applications">▤ My applications <span id="navAppCount">0</span></button>
+    <button class="nav" data-page="profile">◉ My profile</button>
+    <button class="nav" data-page="resume">▧ Resume studio</button>
+
+    <div class="nav-label">RECRUITER TOOLS</div>
+    <button class="nav" data-page="recruiter">▦ Recruiter overview</button>
+    <button class="nav" data-page="candidates">♙ Candidate directory</button>
+    <button class="nav" data-page="compare">⇄ Compare candidates</button>
+    <button class="nav" data-page="reports">▥ Reports & insights</button>
+    <button class="nav" data-page="companies">▣ Company directory <span>100</span></button>
+
+    <div class="sidebar-bottom">
+      <div class="demo-note">
+        <span class="pulse"></span> Demo workspace
+        <small>Data stored in this browser</small>
+      </div>
+      <button class="secondary full" id="resetDemo">↻ Reset demo data</button>
+      <div class="profile">
+        <div class="avatar" id="sidebarAvatar">GU</div>
+        <div>
+          <b id="sidebarName">Guest Student</b>
+          <small>Workspace user</small>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <div class="breadcrumb">HIRELENS AI / <span id="breadcrumb">Overview</span></div>
+        <h2 id="pageTitle">Overview</h2>
+      </div>
+      <div class="top-actions">
+        <span class="live">● DEMO MODE</span>
+        <button class="icon-btn" id="menuToggle">☰</button>
+      </div>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section class="page active" id="overview">
+
+      <div class="welcome">
+        <div>
+          <span class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+          <h1>Find the right opportunity.<br>
+          Discover the <span>right talent.</span></h1>
+          <p>HIRELENS AI connects students with meaningful opportunities and helps recruiters identify promising candidates through explainable resume insights.</p>
+          <button class="primary" data-go="opportunities">Explore opportunities ↗</button>
+          <button class="secondary" data-go="recruiter">Open recruiter workspace</button>
+          <div class="hero-tags">✦ Skill-based matching &nbsp; ✦ Transparent screening &nbsp; ✦ Career growth</div>
+        </div>
+        <div class="hero-art">
+          <div class="orbit">✦</div>
+          <div class="hero-core">H</div>
+          <div class="orbit2">✧</div>
+        </div>
+      </div>
+
+      <div class="section-intro">
+        <span class="eyebrow">AT A GLANCE</span>
+        <h2>Your career dashboard</h2>
+        <p>A live view of this demo workspace.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div>▤ Applications sent</div><strong id="statApplications">0</strong><small>Across jobs and internships</small></div>
+        <div class="stat"><div>✦ Open opportunities</div><strong id="statOpportunities">12</strong><small>Illustrative demo listings</small></div>
+        <div class="stat"><div>♙ Demo candidates</div><strong id="statCandidates">6</strong><small>Sample recruiter profiles</small></div>
+        <div class="stat"><div>◎ Resume readiness</div><strong id="statReadiness">—</strong><small>Based on uploaded resume</small></div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h3>Recommended opportunities</h3><p>Explore roles that may fit your interests.</p></div>
+            <button class="text-btn" data-go="opportunities">View all ↗</button>
+          </div>
+          <div id="recommendedList"></div>
+        </div>
+
+        <div class="panel">
+          <div class="assistant-heading">
+            <div class="ai-avatar">✧</div>
+            <div><b>Career assistant</b><small>Ask about this demo workspace</small></div>
+          </div>
+          <div id="chatMessages" class="chat-messages">
+            <div class="message bot">Hello! I can help you explore Bengaluru companies, understand skill matches and review your resume.</div>
+          </div>
+          <div class="chat-input">
+            <input id="chatInput" placeholder="Ask about skills, companies or jobs...">
+            <button class="primary" id="sendChat">➤</button>
+          </div>
+          <div class="quick-queries">
+            <button data-question="What skills are in demand?">In-demand skills</button>
+            <button data-question="How can I improve my resume?">Improve my resume</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <span class="eyebrow">TAKE THE NEXT STEP</span>
+        <h2>Find your opportunity</h2>
+        <p>Discover jobs and internships from the HIRELENS demo company directory.</p>
+        <button class="primary" data-go="opportunities">Explore opportunities ↗</button>
+      </div>
+    </section>
+
+    <!-- OPPORTUNITIES -->
+    <section class="page" id="opportunities">
+      <div class="section-intro">
+        <span class="eyebrow">CAREER DISCOVERY</span>
+        <h1>Find your opportunity</h1>
+        <p>Explore illustrative jobs and internships and discover the skills associated with Bengaluru employers.</p>
+      </div>
+
+      <div class="panel">
+        <div class="toolbar">
+          <input id="opSearch" placeholder="⌕ Search job, skill or company...">
+          <select id="opCategory">
+            <option value="">All categories</option>
+            <option value="Job">Jobs</option>
+            <option value="Internship">Internships</option>
+          </select>
+          <select id="opLocation">
+            <option value="">All locations</option>
+            <option>Bengaluru</option>
+            <option>Remote</option>
+            <option>Hybrid</option>
+          </select>
+        </div>
+        <div class="filter-row">
+          <button class="filter active" data-mode="">All work modes</button>
+          <button class="filter" data-mode="Remote">Remote</button>
+          <button class="filter" data-mode="Hybrid">Hybrid</button>
+          <button class="filter" data-mode="On-site">On-site</button>
+        </div>
+        <p id="opCount">12 opportunities</p>
+        <div id="opportunityList" class="card-grid"></div>
+      </div>
+      <p class="tip">HIRELENS tip: A match score is guidance, not a hiring decision. Demo opportunities are illustrative, not verified vacancies.</p>
+    </section>
+
+    <!-- APPLICATIONS -->
+    <section class="page" id="applications">
+      <div class="section-intro">
+        <span class="eyebrow">KEEP TRACK</span>
+        <h1>My applications</h1>
+        <p>Review the opportunities you have applied to in this browser demo.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">All applications<strong id="allApps">0</strong></div>
+        <div class="stat">Jobs<strong id="jobApps">0</strong></div>
+        <div class="stat">Internships<strong id="internApps">0</strong></div>
+      </div>
+      <div class="panel" id="applicationList"><div class="empty">You haven't applied to any opportunities yet.</div></div>
+    </section>
+
+    <!-- PROFILE -->
+    <section class="page" id="profile">
+      <div class="section-intro">
+        <span class="eyebrow">YOUR PROFESSIONAL IDENTITY</span>
+        <h1>My profile</h1>
+        <p>Build a profile that helps employers understand your strengths.</p>
+      </div>
+      <div class="grid2">
+        <form class="panel" id="profileForm">
+          <h3>01 · Personal & academic details</h3>
+          <label>Full name<input id="fullName" placeholder="Your full name" required></label>
+          <label>Email address<input id="email" type="email" placeholder="Your email"></label>
+          <label>College / University<input id="college" placeholder="College name"></label>
+          <label>Course / Specialization<input id="course" placeholder="e.g. Data Science"></label>
+          <label>Current year
+            <select id="studyYear">
+              <option value="">Select year</option>
+              <option>1st Year</option><option>2nd Year</option>
+              <option>3rd Year</option><option>4th Year</option>
+              <option>Graduate</option>
+            </select>
+          </label>
+          <label>Preferred role<input id="preferredRole" placeholder="e.g. Data Analyst"></label>
+          <h3>02 · Skills & introduction</h3>
+          <label>Technical and professional skills
+            <textarea id="skills" placeholder="Python, SQL, Java, Communication..."></textarea>
+          </label>
+          <label>About me<textarea id="about" rows="4" placeholder="Write a short introduction..."></textarea></label>
+          <button class="primary full" type="submit">Save profile ✓</button>
+        </form>
+        <div class="panel">
+          <h3>Your profile preview</h3>
+          <div class="avatar large" id="previewAvatar">GU</div>
+          <h2 id="previewName">Your name</h2>
+          <p id="previewRole">Your preferred role</p>
+          <p id="previewCollege">Add your college</p>
+          <h3>Skills</h3>
+          <div id="previewSkills" class="badges">Add skills to display them here.</div>
+          <div class="status">● Saved locally</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME -->
+    <section class="page" id="resume">
+      <div class="section-intro">
+        <span class="eyebrow">RESUME INTELLIGENCE</span>
+        <h1>Resume studio</h1>
+        <p>Upload a PDF or DOCX resume for local text extraction and explainable feedback.</p>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>↑ Upload your resume</h3>
+          <label class="upload-zone">
+            <div class="upload-icon">↑</div>
+            <h3>Choose your resume</h3>
+            <p>PDF, DOCX or TXT · Maximum 5 MB</p>
+            <input type="file" id="resumeFile" accept=".pdf,.docx,.txt">
+          </label>
+          <p id="resumeFileName">No file selected</p>
+          <button class="primary full" id="analyzeResume">✧ Analyze my resume</button>
+          <div id="resumeStatus" class="muted"></div>
+        </div>
+        <div class="panel">
+          <h3>✧ Your resume insights</h3>
+          <div id="resumeInsights">
+            <div class="empty">Upload a resume to start the analysis.</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Resume essentials</h3>
+        <div class="check-grid">
+          <div>✓ <b>Clear contact information</b><small>Professional email and phone number</small></div>
+          <div>✓ <b>Relevant technical skills</b><small>Match skills to the opportunity</small></div>
+          <div>✓ <b>Projects with outcomes</b><small>Explain your contribution and tools</small></div>
+          <div>✓ <b>Readable formatting</b><small>Consistent headings and spacing</small></div>
+        </div>
+      </div>
+      <p class="tip">Demo privacy: resume files are processed in your browser and are not sent to a server. Closing the browser may clear the selected file.</p>
+    </section>
+
+    <!-- RECRUITER -->
+    <section class="page" id="recruiter">
+      <div class="section-intro">
+        <span class="eyebrow">RECRUITMENT INTELLIGENCE</span>
+        <h1>Recruiter overview</h1>
+        <p>Explore sample candidates and review explainable skill-match signals.</p>
+        <span class="tag">SAMPLE DATA ONLY</span>
+      </div>
+      <div class="stats">
+        <div class="stat">♙ Sample candidates<strong id="recCandidates">6</strong><small>Illustrative profiles</small></div>
+        <div class="stat">✦ Strong matches<strong id="recStrong">0</strong><small>Score of 75% or higher</small></div>
+        <div class="stat">▤ Applications<strong id="recApplications">0</strong><small>Submitted in this browser</small></div>
+        <div class="stat">◎ Company profiles<strong>100</strong><small>Bengaluru company directory</small></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <h3>Candidate match distribution</h3>
+          <p>Based on sample profiles and selected role.</p>
+          <div id="matchChart" class="chart"></div>
+          <small>Illustrative keyword-based scores, not validated AI predictions.</small>
+        </div>
+        <div class="panel">
+          <h3>Company directory</h3>
+          <p>Sample employer information included in this demo.</p>
+          <button class="primary" data-go="companies">Explore 100 companies ↗</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Recent applications</h3>
+        <div id="recentApplications"><div class="empty">No applications submitted yet.</div></div>
+        <button class="secondary" data-go="applications">View student view ↗</button>
+      </div>
+    </section>
+
+    <!-- CANDIDATES -->
+    <section class="page" id="candidates">
+      <div class="section-intro">
+        <span class="eyebrow">TALENT DISCOVERY</span>
+        <h1>Candidate directory</h1>
+        <p>Search and review the fictional candidate profiles included for demonstration.</p>
+      </div>
+      <div class="panel">
+        <div class="toolbar">
+          <input id="candidateSearch" placeholder="Search candidates or skills...">
+          <select id="candidateRole">
+            <option value="">All role interests</option>
+            <option>Data Science</option>
+            <option>Software Engineering</option>
+            <option>Web Development</option>
+            <option>Cybersecurity</option>
+          </select>
+          <select id="candidateSort">
+            <option value="score">Highest match</option>
+            <option value="name">Name A–Z</option>
+          </select>
+        </div>
+        <div id="candidateList" class="card-grid"></div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="page" id="compare">
+      <div class="section-intro">
+        <span class="eyebrow">SIDE-BY-SIDE REVIEW</span>
+        <h1>Compare candidates</h1>
+        <p>Select up to three sample candidates and compare their profile signals.</p>
+      </div>
+      <div class="panel">
+        <div class="form-grid">
+          <label>Candidate one<select id="compare1"></select></label>
+          <label>Candidate two<select id="compare2"></select></label>
+          <label>Candidate three (optional)<select id="compare3"><option value="">None</option></select></label>
+        </div>
+        <button class="primary" id="compareBtn">Compare profiles ⇄</button>
+        <div id="compareResults"></div>
+      </div>
+    </section>
+
+    <!-- REPORTS -->
+    <section class="page" id="reports">
+      <div class="section-intro">
+        <span class="eyebrow">WORKSPACE INSIGHTS</span>
+        <h1>Reports & insights</h1>
+        <p>Export the sample candidate and application information available in this browser.</p>
+      </div>
+      <div class="stats">
+        <div class="stat">Applications submitted<strong id="reportApps">0</strong></div>
+        <div class="stat">Job applications<strong id="reportJobs">0</strong></div>
+        <div class="stat">Internship applications<strong id="reportInterns">0</strong></div>
+        <div class="stat">Sample candidates<strong>6</strong></div>
+      </div>
+      <div class="panel">
+        <h3>Export demo data</h3>
+        <p>Download CSV files containing the current applications and sample candidate profiles.</p>
+        <div class="export-buttons">
+          <button class="primary" id="exportApps">⇩ Export applications CSV</button>
+          <button class="secondary" id="exportCandidates">⇩ Export candidates CSV</button>
+          <button class="secondary" id="exportCompanies">⇩ Export companies CSV</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>How HIRELENS demo matching works</h3>
+        <p>The prototype uses transparent keyword matching between resume/profile text and role requirements. It is not a trained machine-learning model, does not infer personality or job performance, and should not make hiring decisions.</p>
+      </div>
+    </section>
+
+    <!-- COMPANIES -->
+    <section class="page" id="companies">
+      <div class="section-intro">
+        <span class="eyebrow">BENGALURU EMPLOYER INTELLIGENCE</span>
+        <h1>Company directory</h1>
+        <p>Explore 100 company profiles, industries and representative technology skills.</p>
+      </div>
+      <div class="panel">
+        <div class="toolbar">
+          <input id="companySearch" placeholder="Search company or technology...">
+          <select id="companyIndustry">
+            <option value="">All industries</option>
+            <option>IT Services</option>
+            <option>Product & Software</option>
+            <option>Consulting</option>
+            <option>Finance & Fintech</option>
+            <option>Startups & E-commerce</option>
+            <option>Cloud & Semiconductor</option>
+          </select>
+        </div>
+        <p id="companyCount">100 companies</p>
+        <div id="companyList" class="card-grid"></div>
+      </div>
+      <p class="tip">Company skill profiles are indicative technology and role-family examples, not official job descriptions or confirmed current vacancies.</p>
+    </section>
+
+    <footer>
+      © 2026 HIRELENS AI · Smart hiring intelligence · Front-end demonstration
+    </footer>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
